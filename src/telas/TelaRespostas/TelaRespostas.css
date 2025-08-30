@@ -1,0 +1,581 @@
+/* TelaRespostas Component Styles */
+.tela-respostas {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem 1rem;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+/* Back Button */
+.back-button {
+  background: #6b7280;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  background: #374151;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Section */
+.respostas-header {
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.title-icon {
+  font-size: 1.5rem;
+  color: #6b7280;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Create New Answer Card */
+.criar-resposta-card {
+  background: #ffffff;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100px;
+  width: 800px;
+}
+
+.criar-resposta-card:hover {
+  border-color: #2563eb;
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.criar-icon {
+  font-size: 1.5rem;
+  color: #6b7280;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.criar-resposta-card:hover .criar-icon {
+  color: #2563eb;
+}
+
+.criar-text {
+  font-size: 1.1rem;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+/* Answers Grid */
+.respostas-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+.resposta-card {
+  background: #ffffff;
+  border: 2px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  width: 800px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.resposta-card.expanded {
+  height: auto;
+}
+
+.resposta-card:not(.expanded) {
+  height: 90px;
+}
+
+.resposta-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.resposta-card:hover {
+  border-color: #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.resposta-content {
+  flex: 1;
+}
+
+.resposta-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Action Buttons */
+.resposta-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Eye Button */
+.eye-button {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.eye-button:hover {
+  background: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.eye-icon {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.eye-button:hover .eye-icon {
+  color: #374151;
+}
+
+/* Copy Button */
+.copy-button {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.copy-button:hover {
+  background: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.copy-icon {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.copy-button:hover .copy-icon {
+  color: #374151;
+}
+
+/* Expanded Content Styles */
+.resposta-expanded {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  animation: expandContent 0.3s ease-out;
+}
+
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aguardando-config h4,
+.encerramento-config h4,
+.regularizacao-config h4,
+.static-preview h5 {
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+/* Gender Selection Styles */
+.gender-selection {
+  margin-bottom: 1.5rem;
+}
+
+.gender-selection p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.gender-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.gender-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.gender-button:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+.gender-button.selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.platform-selection p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.platform-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.platform-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.platform-checkbox:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.platform-checkbox input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.message-preview h5 {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.preview-content {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #374151;
+  white-space: pre-wrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .tela-respostas {
+  color: #ffffff;
+}
+
+body.dark-mode .page-title {
+  color: #ffffff;
+}
+
+body.dark-mode .title-icon {
+  color: #d1d5db;
+}
+
+body.dark-mode .criar-resposta-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .criar-resposta-card:hover {
+  background: #374151;
+  border-color: #60a5fa;
+}
+
+body.dark-mode .criar-icon {
+  color: #d1d5db;
+}
+
+body.dark-mode .criar-resposta-card:hover .criar-icon {
+  color: #60a5fa;
+}
+
+body.dark-mode .criar-text {
+  color: #60a5fa;
+}
+
+body.dark-mode .resposta-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .resposta-card:hover {
+  border-color: #4b5563;
+}
+
+body.dark-mode .resposta-title {
+  color: #ffffff;
+}
+
+body.dark-mode .copy-button:hover {
+  background: #374151;
+}
+
+body.dark-mode .copy-icon {
+  color: #d1d5db;
+}
+
+body.dark-mode .copy-button:hover .copy-icon {
+  color: #ffffff;
+}
+
+/* Dark Mode Expanded Content */
+body.dark-mode .resposta-expanded {
+  border-top-color: #4b5563;
+}
+
+body.dark-mode .aguardando-config h4,
+body.dark-mode .encerramento-config h4,
+body.dark-mode .regularizacao-config h4,
+body.dark-mode .static-preview h5,
+body.dark-mode .message-preview h5 {
+  color: #ffffff;
+}
+
+/* Dark Mode Gender Selection */
+body.dark-mode .gender-selection p {
+  color: #d1d5db;
+}
+
+body.dark-mode .gender-button {
+  background: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+body.dark-mode .gender-button:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
+
+body.dark-mode .gender-button.selected {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+body.dark-mode .platform-selection p {
+  color: #d1d5db;
+}
+
+body.dark-mode .platform-checkbox {
+  background: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+body.dark-mode .platform-checkbox:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
+
+body.dark-mode .preview-content {
+  background: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+/* Dark Mode Eye Button */
+body.dark-mode .eye-button:hover {
+  background: #374151;
+}
+
+body.dark-mode .eye-icon {
+  color: #d1d5db;
+}
+
+body.dark-mode .eye-button:hover .eye-icon {
+  color: #ffffff;
+}
+
+/* Dark Mode Back Button */
+body.dark-mode .back-button {
+  background: #4b5563;
+  color: #ffffff;
+}
+
+body.dark-mode .back-button:hover {
+  background: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .respostas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tela-respostas {
+    padding: 1.5rem 1rem 5rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .criar-resposta-card {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .resposta-card {
+    padding: 1.5rem;
+  }
+
+  .resposta-title {
+    font-size: 0.95rem;
+  }
+
+  .platform-checkboxes {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .gender-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .gender-button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .resposta-actions {
+    gap: 0.25rem;
+  }
+
+  .eye-button,
+  .copy-button {
+    width: 28px;
+    height: 28px;
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tela-respostas {
+    padding: 1rem 0.75rem 4.5rem 0.75rem;
+  }
+
+  .page-title {
+    font-size: 1.3rem;
+  }
+
+  .criar-resposta-card {
+    padding: 1.25rem;
+  }
+
+  .resposta-card {
+    padding: 1.25rem;
+  }
+
+  .resposta-title {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .tela-respostas {
+    padding: 0.75rem 0.5rem 4rem 0.5rem;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+  }
+
+  .header-title {
+    gap: 0.5rem;
+  }
+
+  .title-icon {
+    font-size: 1.25rem;
+  }
+}
