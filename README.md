@@ -5,7 +5,6 @@
 ![React Router](https://img.shields.io/badge/React_Router-7.8.2-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-Modern-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)
 
 Uma plataforma moderna e completa para suporte técnico de TI, desenvolvida com React e Vite. Sistema inspirado no Zendesk com funcionalidades avançadas para gestão de respostas, criação de documentos técnicos e ferramentas de produtividade.
 
