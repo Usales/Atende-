@@ -1,4 +1,24 @@
 /* TelaCriarRespostas Component Styles */
+.tela-criar-respostas,
+.tela-criar-respostas *,
+.tela-criar-respostas h1,
+.tela-criar-respostas h2,
+.tela-criar-respostas h3,
+.tela-criar-respostas h4,
+.tela-criar-respostas h5,
+.tela-criar-respostas h6,
+.tela-criar-respostas p,
+.tela-criar-respostas span,
+.tela-criar-respostas div,
+.tela-criar-respostas button,
+.tela-criar-respostas input,
+.tela-criar-respostas select,
+.tela-criar-respostas textarea,
+.tela-criar-respostas label,
+.tela-criar-respostas pre {
+  font-family: 'Montserrat', 'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
 .tela-criar-respostas {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,6 +42,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: 'Montserrat', 'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .back-button:hover {
@@ -52,7 +73,7 @@
   font-weight: 600;
   color: #1f2937;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Montserrat', 'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Form Container */
@@ -134,7 +155,7 @@
   border: 2px solid #e5e7eb;
   border-radius: 8px;
   font-size: 0.95rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Montserrat', 'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition: all 0.2s ease;
   background: #ffffff;
   color: #374151;
@@ -181,7 +202,7 @@
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 1rem 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Montserrat', 'Montserrat Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .upgrade-buttons {

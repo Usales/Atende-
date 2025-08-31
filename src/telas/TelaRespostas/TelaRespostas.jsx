@@ -5,6 +5,7 @@ import './TelaRespostas.css';
 function TelaRespostas() {
   const navigate = useNavigate();
   const [expandedCard, setExpandedCard] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedPlatforms, setSelectedPlatforms] = useState({
     gmail: false,
     googlechat: false,
@@ -152,6 +153,19 @@ Atenciosamente.`;
     setSelectedGender(gender);
   };
 
+  const handleSearch = () => {
+    console.log('Searching for:', searchTerm);
+  };
+
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
+
+  const filteredRespostas = respostasProntas.filter(resposta =>
+    resposta.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (resposta.content && resposta.content.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <div className="tela-respostas">
       {/* Back Button */}
@@ -167,16 +181,47 @@ Atenciosamente.`;
         </div>
       </div>
 
+      {/* Search Section */}
+      <section className="search-section animate-slide-down animate-delay-2">
+        <div className="search-container">
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              placeholder="Buscar resposta pronta..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+            {searchTerm && (
+              <button 
+                onClick={handleClearSearch}
+                className="clear-button"
+                title="Limpar busca"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          <button 
+            onClick={handleSearch}
+            className="search-button"
+          >
+            🔍 Buscar
+          </button>
+        </div>
+      </section>
+
       {/* Create New Answer Card */}
-      <div className="criar-resposta-card animate-slide-down animate-delay-2" onClick={handleCriarNovaResposta}>
+      <div className="criar-resposta-card animate-slide-down animate-delay-3" onClick={handleCriarNovaResposta}>
         <div className="criar-icon">✚</div>
         <span className="criar-text">Criar nova resposta</span>
       </div>
 
       {/* Answers Grid */}
-      <div className="respostas-grid animate-slide-down animate-delay-3">
-        {respostasProntas.map((resposta, index) => (
-          <div key={index} className={`resposta-card ${expandedCard === index ? 'expanded' : ''} animate-slide-down animate-delay-${4 + index}`}>
+      <div className="respostas-grid animate-slide-down animate-delay-4">
+        {filteredRespostas.length > 0 ? (
+          filteredRespostas.map((resposta, index) => (
+            <div key={index} className={`resposta-card ${expandedCard === index ? 'expanded' : ''} animate-slide-down animate-delay-${5 + index}`}>
             <div className="resposta-main">
               <div className="resposta-content">
                 <h3 className="resposta-title">{resposta.title}</h3>
@@ -325,7 +370,16 @@ Atenciosamente.`;
               </div>
             )}
           </div>
-        ))}
+        ))
+        ) : (
+          <div className="no-results animate-slide-down animate-delay-5">
+            <div className="no-results-icon">🔍</div>
+            <h3 className="no-results-title">Nenhuma resposta encontrada</h3>
+            <p className="no-results-text">
+              Tente buscar por palavras-chave diferentes ou crie uma nova resposta.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
