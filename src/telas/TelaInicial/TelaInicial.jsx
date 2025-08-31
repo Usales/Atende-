@@ -3,92 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './TelaInicial.css';
 import cieeImage from '../../assets/images/ciee.jpg';
 
-// Safe import of framer-motion with fallback
-let motion;
-let isMotionAvailable = false;
-
-try {
-  const framerMotion = require('framer-motion');
-  motion = framerMotion.motion;
-  isMotionAvailable = true;
-} catch (error) {
-  console.warn('Framer Motion not available, using fallback');
-  // Fallback components
-  motion = {
-    div: ({ children, className, onClick, ...props }) => (
-      <div className={className} onClick={onClick}>{children}</div>
-    ),
-    section: ({ children, className, ...props }) => (
-      <section className={className}>{children}</section>
-    ),
-    ul: ({ children, className, ...props }) => (
-      <ul className={className}>{children}</ul>
-    ),
-    li: ({ children, className, onClick, ...props }) => (
-      <li className={className} onClick={onClick}>{children}</li>
-    )
-  };
-}
-
 function TelaInicial() {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
-
-  // Framer Motion animation variants - slide down from top
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: -50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { y: -80, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      y: -8,
-      scale: 1.03,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const popularItemVariants = {
-    hidden: { y: -30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
 
   const categories = [
     { 
@@ -193,32 +110,10 @@ function TelaInicial() {
     navigate('/respostas');
   };
 
-  // Conditional animation props - only apply if Framer Motion is available
-  const getAnimationProps = (variants, additionalProps = {}) => {
-    if (!isMotionAvailable) return {};
-    return {
-      initial: "hidden",
-      animate: "visible",
-      variants,
-      ...additionalProps
-    };
-  };
-
-  const getHoverProps = (hoverEffect) => {
-    if (!isMotionAvailable) return {};
-    return { whileHover: hoverEffect };
-  };
-
   return (
-    <motion.div 
-      className="tela-inicial"
-      {...getAnimationProps(containerVariants)}
-    >
+    <div className="tela-inicial">
       {/* Search Section */}
-      <motion.section 
-        className="search-section" 
-        {...getAnimationProps(itemVariants)}
-      >
+      <section className="search-section animate-slide-down">
         <div className="search-container">
           <input
             type="text"
@@ -234,27 +129,19 @@ function TelaInicial() {
             Buscar
           </button>
         </div>
-      </motion.section>
+      </section>
 
       {/* Categories Section */}
-      <motion.section 
-        className="categories-section" 
-        {...getAnimationProps(itemVariants)}
-      >
+      <section className="categories-section animate-slide-down animate-delay-1">
         <h2 className="section-title">
           📂 Categorias
         </h2>
-        <motion.div 
-          className="categories-grid"
-          {...getAnimationProps(containerVariants)}
-        >
+        <div className="categories-grid animate-slide-down animate-delay-2">
           {categories.map((category, index) => {
             return (
-              <motion.div 
+              <div 
                 key={index}
-                className="category-card"
-                {...getAnimationProps(cardVariants)}
-                {...getHoverProps("hover")}
+                className={`category-card animate-slide-down animate-delay-${3 + index}`}
                 onClick={() => handleCategoryClick(category)}
               >
                 <div className="category-icon">
@@ -272,38 +159,30 @@ function TelaInicial() {
                   <h3 className="category-title">{category.title}</h3>
                   <p className="category-description">{category.description}</p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
 
       {/* Popular Answers Section */}
-      <motion.section 
-        className="popular-section" 
-        {...getAnimationProps(itemVariants)}
-      >
+      <section className="popular-section animate-slide-down animate-delay-8">
         <h2 className="section-title">
           ✨ Respostas mais usadas
         </h2>
-        <motion.ul 
-          className="popular-list"
-          {...getAnimationProps(containerVariants)}
-        >
+        <ul className="popular-list">
           {popularAnswers.map((answer, index) => (
-            <motion.li 
+            <li 
               key={index}
-              className="popular-item"
-              {...getAnimationProps(popularItemVariants)}
-              {...getHoverProps({ x: 15, transition: { duration: 0.2 } })}
+              className={`popular-item animate-slide-down animate-delay-${9 + index}`}
               onClick={() => handleAnswerClick(answer)}
             >
               • {answer}
-            </motion.li>
+            </li>
           ))}
-        </motion.ul>
-      </motion.section>
-    </motion.div>
+        </ul>
+      </section>
+    </div>
   );
 }
 
