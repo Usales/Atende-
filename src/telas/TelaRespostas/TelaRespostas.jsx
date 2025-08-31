@@ -155,12 +155,12 @@ Atenciosamente.`;
   return (
     <div className="tela-respostas">
       {/* Back Button */}
-      <button className="back-button" onClick={handleVoltar}>
+      <button className="back-button animate-slide-down" onClick={handleVoltar}>
         ← Voltar para Início
       </button>
 
       {/* Header Section */}
-      <div className="respostas-header">
+      <div className="respostas-header animate-slide-down animate-delay-1">
         <div className="header-title">
           <span className="title-icon">💬</span>
           <h1 className="page-title">Respostas Prontas</h1>
@@ -168,15 +168,15 @@ Atenciosamente.`;
       </div>
 
       {/* Create New Answer Card */}
-      <div className="criar-resposta-card" onClick={handleCriarNovaResposta}>
+      <div className="criar-resposta-card animate-slide-down animate-delay-2" onClick={handleCriarNovaResposta}>
         <div className="criar-icon">✚</div>
         <span className="criar-text">Criar nova resposta</span>
       </div>
 
       {/* Answers Grid */}
-      <div className="respostas-grid">
+      <div className="respostas-grid animate-slide-down animate-delay-3">
         {respostasProntas.map((resposta, index) => (
-          <div key={index} className={`resposta-card ${expandedCard === index ? 'expanded' : ''}`}>
+          <div key={index} className={`resposta-card ${expandedCard === index ? 'expanded' : ''} animate-slide-down animate-delay-${4 + index}`}>
             <div className="resposta-main">
               <div className="resposta-content">
                 <h3 className="resposta-title">{resposta.title}</h3>

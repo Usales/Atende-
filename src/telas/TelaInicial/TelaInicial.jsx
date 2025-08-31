@@ -1,10 +1,94 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TelaInicial.css';
+import cieeImage from '../../assets/images/ciee.jpg';
+
+// Safe import of framer-motion with fallback
+let motion;
+let isMotionAvailable = false;
+
+try {
+  const framerMotion = require('framer-motion');
+  motion = framerMotion.motion;
+  isMotionAvailable = true;
+} catch (error) {
+  console.warn('Framer Motion not available, using fallback');
+  // Fallback components
+  motion = {
+    div: ({ children, className, onClick, ...props }) => (
+      <div className={className} onClick={onClick}>{children}</div>
+    ),
+    section: ({ children, className, ...props }) => (
+      <section className={className}>{children}</section>
+    ),
+    ul: ({ children, className, ...props }) => (
+      <ul className={className}>{children}</ul>
+    ),
+    li: ({ children, className, onClick, ...props }) => (
+      <li className={className} onClick={onClick}>{children}</li>
+    )
+  };
+}
 
 function TelaInicial() {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+
+  // Framer Motion animation variants - slide down from top
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { y: -80, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      y: -8,
+      scale: 1.03,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const popularItemVariants = {
+    hidden: { y: -30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
 
   const categories = [
     { 
@@ -15,7 +99,7 @@ function TelaInicial() {
     { 
       icon: '🖥️', 
       title: 'Sistema Operacional',
-      description: 'Windows, macOS, Linux'
+      description: 'Windows e Linux'
     },
     { 
       icon: '📧', 
@@ -46,6 +130,12 @@ function TelaInicial() {
       icon: '✅', 
       title: 'Extensões Úteis',
       description: 'Extensões para otimizar o Atendimento'
+    },
+    { 
+      icon: cieeImage, 
+      title: 'Bases CIEE',
+      description: 'Foco em resolução de problemas do CIEE',
+      isImage: true
     }
   ];
 
@@ -63,8 +153,32 @@ function TelaInicial() {
   const handleCategoryClick = (category) => {
     console.log('Category clicked:', category.title);
     
+    // Navigate to TelaRede for "Rede & Internet" category
+    if (category.title === 'Rede & Internet') {
+      navigate('/rede');
+    }
+    // Navigate to TelaOperacional for "Sistema Operacional" category
+    else if (category.title === 'Sistema Operacional') {
+      navigate('/operacional');
+    }
+    // Navigate to TelaEmails for "E-mails & Acessos" category
+    else if (category.title === 'E-mails & Acessos') {
+      navigate('/emails');
+    }
+    // Navigate to TelaSeguranca for "Segurança" category
+    else if (category.title === 'Segurança') {
+      navigate('/seguranca');
+    }
+    // Navigate to TelaHardware for "Hardware & Equipamentos" category
+    else if (category.title === 'Hardware & Equipamentos') {
+      navigate('/hardware');
+    }
+    // Navigate to TelaSoftwares for "Softwares & Aplicações" category
+    else if (category.title === 'Softwares & Aplicações') {
+      navigate('/softwares');
+    }
     // Navigate to TelaRespostas for "Respostas Prontas" category
-    if (category.title === 'Respostas Prontas') {
+    else if (category.title === 'Respostas Prontas') {
       navigate('/respostas');
     }
     // Navigate to TelaExtensoes for "Extensões Úteis" category
@@ -79,10 +193,32 @@ function TelaInicial() {
     navigate('/respostas');
   };
 
+  // Conditional animation props - only apply if Framer Motion is available
+  const getAnimationProps = (variants, additionalProps = {}) => {
+    if (!isMotionAvailable) return {};
+    return {
+      initial: "hidden",
+      animate: "visible",
+      variants,
+      ...additionalProps
+    };
+  };
+
+  const getHoverProps = (hoverEffect) => {
+    if (!isMotionAvailable) return {};
+    return { whileHover: hoverEffect };
+  };
+
   return (
-    <div className="tela-inicial">
+    <motion.div 
+      className="tela-inicial"
+      {...getAnimationProps(containerVariants)}
+    >
       {/* Search Section */}
-      <section className="search-section animate-slide-down">
+      <motion.section 
+        className="search-section" 
+        {...getAnimationProps(itemVariants)}
+      >
         <div className="search-container">
           <input
             type="text"
@@ -98,48 +234,76 @@ function TelaInicial() {
             Buscar
           </button>
         </div>
-      </section>
+      </motion.section>
 
       {/* Categories Section */}
-      <section className="categories-section animate-slide-down animate-delay-1">
+      <motion.section 
+        className="categories-section" 
+        {...getAnimationProps(itemVariants)}
+      >
         <h2 className="section-title">
           📂 Categorias
         </h2>
-        <div className="categories-grid">
-          {categories.map((category, index) => (
-            <div 
-              key={index}
-              className={`category-card animate-slide-down animate-delay-${2 + index}`}
-              onClick={() => handleCategoryClick(category)}
-            >
-              <div className="category-icon">{category.icon}</div>
-              <div className="category-content">
-                <h3 className="category-title">{category.title}</h3>
-                <p className="category-description">{category.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+        <motion.div 
+          className="categories-grid"
+          {...getAnimationProps(containerVariants)}
+        >
+          {categories.map((category, index) => {
+            return (
+              <motion.div 
+                key={index}
+                className="category-card"
+                {...getAnimationProps(cardVariants)}
+                {...getHoverProps("hover")}
+                onClick={() => handleCategoryClick(category)}
+              >
+                <div className="category-icon">
+                  {category.isImage ? (
+                    <img 
+                      src={category.icon} 
+                      alt={category.title} 
+                      className="category-image"
+                    />
+                  ) : (
+                    category.icon
+                  )}
+                </div>
+                <div className="category-content">
+                  <h3 className="category-title">{category.title}</h3>
+                  <p className="category-description">{category.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </motion.section>
 
       {/* Popular Answers Section */}
-      <section className="popular-section animate-slide-down animate-delay-8">
+      <motion.section 
+        className="popular-section" 
+        {...getAnimationProps(itemVariants)}
+      >
         <h2 className="section-title">
           ✨ Respostas mais usadas
         </h2>
-        <ul className="popular-list">
+        <motion.ul 
+          className="popular-list"
+          {...getAnimationProps(containerVariants)}
+        >
           {popularAnswers.map((answer, index) => (
-            <li 
+            <motion.li 
               key={index}
-              className={`popular-item animate-slide-down animate-delay-${9 + index}`}
+              className="popular-item"
+              {...getAnimationProps(popularItemVariants)}
+              {...getHoverProps({ x: 15, transition: { duration: 0.2 } })}
               onClick={() => handleAnswerClick(answer)}
             >
               • {answer}
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </section>
-    </div>
+        </motion.ul>
+      </motion.section>
+    </motion.div>
   );
 }
 
