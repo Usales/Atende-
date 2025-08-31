@@ -5,18 +5,26 @@
 ![React Router](https://img.shields.io/badge/React_Router-7.8.2-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-Modern-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)
 
 Uma plataforma moderna e completa para suporte técnico de TI, desenvolvida com React e Vite. Sistema inspirado no Zendesk com funcionalidades avançadas para gestão de respostas, criação de documentos técnicos e ferramentas de produtividade.
 
+## 🌐 **Demo Online**
+
+**🚀 [Acesse a Aplicação ao Vivo](https://atende.netlify.app/)**
+
+*Experimente todas as funcionalidades diretamente no seu navegador!*
+
 ## 📋 **Índice**
 
+- [🌐 Demo Online](#-demo-online)
 - [🚀 Funcionalidades](#-funcionalidades)
 - [🛠️ Tecnologias](#%EF%B8%8F-tecnologias)
+- [🏢 Instalação](#-instalação)
+- [🔧 Scripts Disponíveis](#-scripts-disponíveis)
 - [🏗️ Arquitetura](#%EF%B8%8F-arquitetura)
 - [🎨 Sistema de Design](#-sistema-de-design)
 - [📱 Responsividade](#-responsividade)
-- [⚡ Instalação](#-instalação)
-- [🔧 Scripts](#-scripts)
 - [🗺️ Roadmap](#%EF%B8%8F-roadmap)
 
 ## 🚀 **Funcionalidades**
@@ -173,9 +181,17 @@ Atende+/
 - **Smooth Transitions**: 0.3s para mudanças de tema
 - **Component Coverage**: 100% dos elementos
 
-## ⚡ **Instalação**
+## 🏢 **Instalação**
 
-### **🔽 Clone & Setup**
+### **📍 Pré-requisitos**
+
+Antes de começar, certifique-se de ter instalado:
+
+- **Node.js** 18+ ([Download](https://nodejs.org/))
+- **npm** 9+ ou **yarn** 1.22+ (vem com Node.js)
+- **Git** ([Download](https://git-scm.com/))
+
+### **🔄 Método 1: Clone via HTTPS**
 ```bash
 # Clone o repositório
 git clone https://github.com/Usales/Atende-.git
@@ -190,31 +206,135 @@ npm install
 npm run dev
 ```
 
-### **📦 Dependências Principais**
+### **🔑 Método 2: Clone via SSH (Recomendado)**
+```bash
+# Clone o repositório (SSH)
+git clone git@github.com:Usales/Atende-.git
+
+# Entre no diretório
+cd Atende-
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+### **📦 Método 3: Download Direto**
+1. [Baixe o ZIP](https://github.com/Usales/Atende-/archive/refs/heads/main.zip)
+2. Extraia o arquivo
+3. Abra o terminal na pasta extraída
+4. Execute os comandos:
+```bash
+npm install
+npm run dev
+```
+
+### **⚙️ Configuração do Ambiente**
+
+O projeto não requer variáveis de ambiente para funcionar localmente. Todas as configurações necessárias estão no `vite.config.js`.
+
+### **🗺️ Verificando a Instalação**
+
+Após executar `npm run dev`, você deve ver:
+
+```
+✨ Vite dev server running at:
+
+➡️  Local:   http://localhost:5173/
+➡️  Network: http://192.168.x.x:5173/
+
+🚀 Ready in Xms
+```
+
+Abra [http://localhost:5173](http://localhost:5173) no seu navegador.
+
+### **📎 Estrutura Após Instalação**
+```
+Atende-/
+├── 📁 node_modules/     # Dependências instaladas
+├── 📁 src/              # Código fonte
+├── 📁 public/           # Assets estáticos
+├── 📁 dist/             # Build de produção (após npm run build)
+├── 📄 package.json      # Dependências e scripts
+├── 📄 vite.config.js    # Configurações do Vite
+└── 📄 README.md        # Documentação
+```
+
+### **📝 Dependências Principais**
 ```json
 {
-  "react": "^19.1.1",
-  "react-dom": "^19.1.1",
-  "react-router-dom": "^7.8.2"
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "vite": "^7.1.2"
+  }
 }
 ```
 
-## 🔧 **Scripts**
+### **⚠️ Solução de Problemas**
 
+**Erro de porta ocupada:**
 ```bash
-# 🚀 Desenvolvimento
-npm run dev          # Servidor local com hot reload
-
-# 🏗️ Build
-npm run build        # Build otimizado para produção
-npm run preview      # Preview do build local
-
-# 🔍 Qualidade
-npm run lint         # ESLint check + auto-fix
-
-# 🚢 Deploy
-npm run predeploy    # Pre-build para deploy
+# Use uma porta diferente
+npm run dev -- --port 3000
 ```
+
+**Erro de permissão (npm):**
+```bash
+# Limpe o cache do npm
+npm cache clean --force
+
+# Reinstale as dependências
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**Erro de módulos não encontrados:**
+```bash
+# Reinstalação completa
+npm ci
+```
+
+## 🔧 **Scripts Disponíveis**
+
+### **🚀 Desenvolvimento**
+```bash
+# Inicia servidor de desenvolvimento com hot reload
+npm run dev
+# ➡️ http://localhost:5173
+# ✨ Recarga automática ao salvar arquivos
+
+# Servidor em porta personalizada
+npm run dev -- --port 3000
+```
+
+### **🏢 Build & Deploy**
+```bash
+# Build para produção
+npm run build
+# ➡️ Gera pasta dist/ otimizada
+
+# Preview do build local
+npm run preview
+# ➡️ http://localhost:4173
+```
+
+### **🔍 Qualidade de Código**
+```bash
+# Lint com ESLint
+npm run lint
+# ✅ Identifica erros de sintaxe e problemas
+```
+
+### **🌐 Deploy Online**
+A aplicação está disponível em: **[https://atende.netlify.app/](https://atende.netlify.app/)**
 
 ## 🗺️ **Roadmap**
 
@@ -238,4 +358,13 @@ npm run predeploy    # Pre-build para deploy
 
 ---
 
-**📌 Atende+ © 2025 | Base de conhecimento e respostas prontas para auxilio de suporte de TI**
+## 🌟 **Links Importantes**
+
+- 🚀 **Demo ao Vivo**: [https://atende.netlify.app/](https://atende.netlify.app/)
+- 📂 **Repositório**: [https://github.com/Usales/Atende-](https://github.com/Usales/Atende-)
+- 📖 **Documentação**: Este README
+- 🐛 **Reportar Issues**: [GitHub Issues](https://github.com/Usales/Atende-/issues)
+
+---
+
+**📌 Atende+ © 2025 | Base de conhecimento e respostas prontas para auxílio de suporte de TI**
