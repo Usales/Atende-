@@ -216,6 +216,104 @@ Teste conectividade interna:
 ping servidor-interno.empresa.com`
     },
     {
+      title: 'Internet Lenta - Otimização',
+      category: 'Configuração',
+      description: 'Configurações para melhorar velocidade de internet e otimizar conexão',
+      content: `🔄 Internet Lenta - Otimização
+
+🚪 Configuração de IP Estático (Melhora Performance)
+
+⚡ Passo a Passo para Melhorar a Internet
+
+1️⃣ Reinicie o roteador/modem
+
+• Desligue da tomada por 30 segundos e religue. Isso limpa cache de rede e renova o IP.
+
+2️⃣ Use conexão por cabo (Ethernet) sempre que possível
+
+• Wi-Fi perde velocidade por distância e interferência.
+
+3️⃣ Troque a frequência do Wi-Fi
+
+• 2.4GHz = mais alcance, mas mais lenta.
+
+• 5GHz = mais rápida, mas menor alcance.
+
+• Configure o roteador para 5GHz se seu equipamento suportar.
+
+4️⃣ Posicione o roteador corretamente
+
+• Coloque em local alto, central da casa, sem paredes grossas ou metais próximos.
+
+5️⃣ Troque o DNS
+
+• Pressione Windows + R → digite ncpa.cpl
+
+• Clique com botão direito na rede → Propriedades
+
+• Duplo clique em “Protocolo IP Versão 4 (TCP/IPv4)”
+
+• Use DNS Google ou Cloudflare:
+
+🌍 DNS preferencial: 8.8.8.8
+
+🌍 DNS alternativo: 8.8.4.4
+(ou Cloudflare: 1.1.1.1 / 1.0.0.1)
+
+6️⃣ Atualize drivers de rede
+
+• Use programas como Driver Booster ou vá no Gerenciador de Dispositivos → Adaptadores de Rede → Atualizar driver.
+
+7️⃣ Feche programas que consomem internet em segundo plano
+
+• Ex.: atualizações automáticas, torrents, sincronização na nuvem.
+
+8️⃣ Ative QoS (Qualidade de Serviço) no roteador
+
+• Dá prioridade para jogos, chamadas de vídeo ou trabalho remoto.
+
+9️⃣ Mantenha o Windows otimizado
+
+• Desative inicialização de programas desnecessários.(Gerenciador de Tarefas)
+
+• Use antivírus para garantir que não há malware consumindo banda.
+
+🔟 Teste velocidade e latência
+
+• Sites como Speedtest ou Fast.com ajudam a medir.
+
+• Compare com o plano contratado. Se for muito inferior → acione o provedor.
+
+⚡ Aceleração Adicional - CloudFlare Warp
+
+🔗 Download: https://1.1.1.1
+
+🌐 O que é CloudFlare Warp?
+• Coloca o usuário dentro da rede Cloud da Cloudflare
+• Permite tráfego mais rápido de dados
+• Melhora latência e velocidade de conexão
+• Gratuito e fácil de usar
+
+🛠️ Como Instalar:
+1️⃣ Acesse: https://1.1.1.1
+2️⃣ Baixe o aplicativo para seu sistema
+3️⃣ Instale e abra o aplicativo
+4️⃣ Clique em "Connect" ou "Conectar"
+5️⃣ Aguarde a conexão ser estabelecida
+
+📊 Benefícios:
+• Redução de latência em jogos
+• Melhor velocidade de streaming
+• Navegação mais fluida
+• Proteção adicional de privacidade
+
+📝 Dicas Extras:
+• Use cabo ethernet sempre que possível
+• Mantenha drivers de rede atualizados
+• Verifique plano de internet contratado
+• Teste velocidade: speedtest.net`
+    },
+    {
       title: 'Firewall - Configuração Básica',
       category: 'Segurança',
       description: 'Configuração de regras de firewall do Windows',

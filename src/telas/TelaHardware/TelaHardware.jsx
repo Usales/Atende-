@@ -244,9 +244,9 @@ function TelaHardware() {
 • Postura correta das mãos`
     },
     {
-      title: 'Problemas de Audio e Som',
+      title: 'Problemas de Audio',
       category: 'Audio',
-      description: 'Solução de problemas com placas de som, fones e alto-falantes',
+      description: 'Solução de problemas com placas de som e audio, fones e alto-falantes',
       content: `🔊 Problemas de Audio e Som
 
 🔍 Diagnóstico de Audio
@@ -254,9 +254,9 @@ function TelaHardware() {
 🔹 Sem Som Algum:
 • Verificar se não está mudo
 • Verificar volume do sistema
-• Testar diferentes aplicações
-• Verificar cabos e conexões
-• Reiniciar serviços de audio
+• Testar em diferentes aplicações
+• Verificar cabos e conexões caso estejam sendo usados
+• Reiniciar serviços de audio e o notebook
 
 🔹 Som Cortando/Falhando:
 • Verificar drivers de audio
@@ -265,83 +265,26 @@ function TelaHardware() {
 • Conflito de aplicações
 • Problemas de hardware
 
-🔧 Configurações de Audio
-
-🎵 Dispositivos de Reprodução:
-• Botão direito no ícone de som
-• Dispositivos de reprodução
-• Definir dispositivo padrão
-• Testar configuração
-• Ajustar níveis
-
-🎤 Dispositivos de Gravação:
-• Configurar microfone padrão
-• Ajustar níveis de entrada
-• Ativar supressão de ruído
-• Testar gravação
-• Configurar exclusividade
-
-🔧 Problemas Específicos
-
-🎧 Fones de Ouvido:
-• Verificar conexão P2/USB
-• Testar em outros dispositivos
-• Verificar cabo danificado
-• Configurar como padrão
-• Ajustar balance L/R
-
-🔊 Alto-falantes:
-• Verificar alimentação
-• Testar cabos de audio
-• Verificar subwoofer
-• Configurar sistema 2.1/5.1
-• Calibrar posicionamento
-
-🔧 Drivers e Software
+🔧 Solucionando problemas
 
 💿 Drivers de Audio:
-• Gerenciador de Dispositivos
-• Atualizar driver de som
-• Desinstalar e reinstalar
-• Driver do fabricante
-• Windows Update
 
-🎛️ Software de Audio:
-• Realtek HD Audio Manager
-• Control panels específicos
-• Equalizadores
-• Efeitos sonoros
-• Configurações avançadas
-
-🔧 Conectores e Cabos
-
-🔌 Tipos de Conexão:
-• P2 3.5mm (analógico)
-• USB (digital)
-• HDMI (audio e vídeo)
-• Optical/Coaxial (digital)
-• Bluetooth (wireless)
-
-🧪 Testes de Audio:
-• Teste de alto-falantes Windows
-• Gravador de voz
-• Aplicações de música
-• Testes online de audio
-• Software de benchmark
-
-🎚️ Configurações Avançadas:
-• Taxa de amostragem (44.1/48 kHz)
-• Profundidade de bits (16/24 bit)
-• Modo exclusivo
-• Melhorias de audio
-• Atraso de buffer
-
-💡 Dicas de Qualidade:
-• Usar drivers originais
-• Evitar muitos efeitos
-• Cabo blindado para P2
-• Posicionamento adequado
-• Isolamento de ruído elétrico`
+1️⃣ Acesse o site oficial: https://www.iobit.com/pt/driver-booster.php  
+2️⃣ Clique em "Download Grátis" e aguarde o instalador baixar.
+3️⃣ Localize o arquivo baixado → clique com botão direito no arquivo enquanto segura SHIFT.
+4️⃣ Clique na opção, executar como usuário diferente → Avançar.
+5️⃣ Aceite os termos de uso e escolha o diretório de instalação . 
+6️⃣ Clique em Instalar e aguarde a conclusão.
+7️⃣ Ao abrir o programa, clique em "Verificar" para analisar os drivers.
+8️⃣ Clique em "Atualizar" ao lado do driver de som recomendado.
+9️⃣ Aguarde o download e a instalação automáticos do driver . 
+🔟 Reinicie o computador para aplicar as mudanças assim que for concluído.
+1️⃣1️⃣ Teste:
+   - Pressione Windows + R → digite: mmsys.cpl  
+   - Vá até a aba Reprodução → selecione sua saída de som padrão e verifique se o volume está ajustado.
+   - Clique em Testar 🔊  
+   - Por fim, clique em "Comunicações" e selecione "não fazer nada".
+`
     },
     {
       title: 'Componentes Internos do PC',

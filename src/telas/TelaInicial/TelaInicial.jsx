@@ -58,6 +58,14 @@ function TelaInicial() {
       description: 'Configuração de VPN corporativa e solução de problemas',
       content: 'Configuração de VPN: Windows (OpenVPN): Baixe e instale OpenVPN Client Importe arquivo .ovpn...'
     },
+    {
+      title: 'Internet Lenta - Otimização',
+      category: 'Rede & Internet',
+      categoryRoute: '/rede',
+      subCategory: 'Configuração',
+      description: 'Configurações para melhorar velocidade de internet e otimizar conexão',
+      content: 'Internet Lenta - Otimização: Configuração de IP Estático para melhor performance: 1️⃣ Pressione Windows + R → digite: ncpa.cpl 2️⃣ Clique com botão direito na conexão de rede → Propriedades 3️⃣ Duplo clique em Protocolo IP Versão 4 (TCP/IPv4)...'
+    },
     
     // Softwares & Aplicações
     {
@@ -117,6 +125,14 @@ function TelaInicial() {
       subCategory: 'Periféricos',
       description: 'Diagnóstico e solução de problemas com dispositivos de entrada',
       content: 'Problemas com Teclado e Mouse: Diagnóstico de Teclado Teclas Não Funcionam: Verificar conexão USB/PS2...'
+    },
+    {
+      title: 'Problemas de Audio',
+      category: 'Hardware & Equipamentos',
+      categoryRoute: '/hardware',
+      subCategory: 'Audio',
+      description: 'Solução de problemas com placas de som e audio, fones e alto-falantes',
+      content: 'Problemas de Audio e Som: Diagnóstico de Audio Sem Som Algum: Verificar se não está mudo, Verificar volume do sistema, Testar em diferentes aplicações, Verificar cabos e conexões caso estejam sendo usados, Reiniciar serviços de audio e o notebook'
     },
     
     // E-mails & Acessos
