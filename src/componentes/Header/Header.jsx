@@ -6,24 +6,51 @@ function Header() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const navigate = useNavigate();
 
-    // Ensure we start in light mode
+    // Load dark mode preference from localStorage on component mount
     useEffect(() => {
-        document.body.classList.remove('dark-mode');
-        const footer = document.querySelector('.footer');
-        if (footer) {
-            footer.classList.remove('dark');
+        const savedDarkMode = localStorage.getItem('darkMode');
+        const isDarkModeEnabled = savedDarkMode === 'true';
+        
+        setIsDarkMode(isDarkModeEnabled);
+        
+        // Apply dark mode class based on saved preference
+        if (isDarkModeEnabled) {
+            document.body.classList.add('dark-mode');
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                footer.classList.add('dark');
+            }
+        } else {
+            document.body.classList.remove('dark-mode');
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                footer.classList.remove('dark');
+            }
         }
     }, []);
 
     const toggleTheme = () => {
-        setIsDarkMode(!isDarkMode);
+        const newDarkMode = !isDarkMode;
+        setIsDarkMode(newDarkMode);
+        
+        // Save preference to localStorage
+        localStorage.setItem('darkMode', newDarkMode.toString());
+        
         // Toggle dark mode class on document body
-        document.body.classList.toggle('dark-mode');
+        if (newDarkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
         
         // Toggle dark mode class on footer if it exists
         const footer = document.querySelector('.footer');
         if (footer) {
-            footer.classList.toggle('dark');
+            if (newDarkMode) {
+                footer.classList.add('dark');
+            } else {
+                footer.classList.remove('dark');
+            }
         }
     };
 
