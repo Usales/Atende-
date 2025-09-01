@@ -264,10 +264,9 @@ function TelaInicial() {
       description: 'Extensões para otimizar o Atendimento'
     },
     { 
-      icon: cieeImage, 
+      icon: '🟦', 
       title: 'Bases CIEE',
       description: 'Foco em resolução de problemas do CIEE',
-      isImage: true
     }
   ];
 
