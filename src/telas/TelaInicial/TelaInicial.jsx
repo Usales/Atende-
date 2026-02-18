@@ -1,11 +1,31 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './TelaInicial.css';
 import cieeImage from '../../assets/images/ciee.jpg';
 
+const CATEGORIAS_INICIAIS = [
+  { icon: '💻', title: 'Rede & Internet', description: 'Problemas de conexão, Wi-Fi, VPN' },
+  { icon: '🖥️', title: 'Sistema Operacional', description: 'Windows e Linux' },
+  { icon: '📧', title: 'E-mails & Acessos', description: 'Contas, senhas, autenticação' },
+  { icon: '🔒', title: 'Segurança', description: 'Antivírus, firewall, proteção' },
+  { icon: '🛠️', title: 'Hardware & Equipamentos', description: 'Impressoras, monitores, periféricos' },
+  { icon: '🌐', title: 'Softwares & Aplicações', description: 'Instalação, configuração, uso' },
+  { icon: '💬', title: 'Respostas Prontas', description: 'Crie respostas ou use prontas' },
+  { icon: '✅', title: 'Extensões Úteis', description: 'Extensões para otimizar o Atendimento' },
+  { icon: '📚', title: 'Criar Biblioteca', description: 'Crie sua biblioteca' }
+];
+
 function TelaInicial() {
   const [search, setSearch] = useState('');
+  const [categories, setCategories] = useState(CATEGORIAS_INICIAIS);
+  const [showCriarBibliotecaModal, setShowCriarBibliotecaModal] = useState(false);
+  const [newBaseTitle, setNewBaseTitle] = useState('');
+  const [newBaseDescription, setNewBaseDescription] = useState('');
+  const [newBaseIcon, setNewBaseIcon] = useState('📁');
+  const emojiScrollRef = useRef(null);
   const navigate = useNavigate();
+
+  const EMOJI_OPCOES = ['📁', '📂', '📚', '📖', '🗂️', '📋', '📌', '🔖', '📎', '📄', '📃', '📑', '🗃️', '📦', '📫', '📬', '💼', '🗄️', '📒', '📓', '📕', '📗', '📘', '📙', '🧾', '📝', '✏️', '🖊️', '📍', '⭐', '🌟', '💡', '🏷️', '📛', '🎯', '✅'];
 
   // Consolidated knowledge base from all categories
   const allKnowledgeBase = [
@@ -222,54 +242,6 @@ function TelaInicial() {
     }
   ];
 
-  const categories = [
-    { 
-      icon: '💻', 
-      title: 'Rede & Internet',
-      description: 'Problemas de conexão, Wi-Fi, VPN'
-    },
-    { 
-      icon: '🖥️', 
-      title: 'Sistema Operacional',
-      description: 'Windows e Linux'
-    },
-    { 
-      icon: '📧', 
-      title: 'E-mails & Acessos',
-      description: 'Contas, senhas, autenticação'
-    },
-    { 
-      icon: '🔒', 
-      title: 'Segurança',
-      description: 'Antivírus, firewall, proteção'
-    },
-    { 
-      icon: '🛠️', 
-      title: 'Hardware & Equipamentos',
-      description: 'Impressoras, monitores, periféricos'
-    },
-    { 
-      icon: '🌐', 
-      title: 'Softwares & Aplicações',
-      description: 'Instalação, configuração, uso'
-    },
-        { 
-      icon: '💬', 
-      title: 'Respostas Prontas',
-      description: 'Crie respostas ou use prontas'
-    },
-        { 
-      icon: '✅', 
-      title: 'Extensões Úteis',
-      description: 'Extensões para otimizar o Atendimento'
-    },
-    { 
-      icon: '🟦', 
-      title: 'Bases CIEE',
-      description: 'Foco em resolução de problemas do CIEE',
-    }
-  ];
-
   const handleSearch = () => {
     console.log('Searching for:', search);
   };
@@ -292,10 +264,27 @@ function TelaInicial() {
   const showSearchResults = search.trim() && searchResults.length > 0;
   const showNoResults = search.trim() && searchResults.length === 0;
 
+  const CATEGORIAS_COM_ROTA = [
+    'Rede & Internet',
+    'Sistema Operacional',
+    'E-mails & Acessos',
+    'Segurança',
+    'Hardware & Equipamentos',
+    'Softwares & Aplicações',
+    'Respostas Prontas',
+    'Extensões Úteis',
+    'Criar Biblioteca'
+  ];
+
   const handleCategoryClick = (category) => {
-    console.log('Category clicked:', category.title);
-    
-    // Navigate to TelaRede for "Rede & Internet" category
+    if (category.title === 'Criar Biblioteca') {
+      setShowCriarBibliotecaModal(true);
+      return;
+    }
+    if (!CATEGORIAS_COM_ROTA.includes(category.title)) {
+      navigate('/biblioteca', { state: { title: category.title, description: category.description } });
+      return;
+    }
     if (category.title === 'Rede & Internet') {
       navigate('/rede');
     }
@@ -327,6 +316,32 @@ function TelaInicial() {
     else if (category.title === 'Extensões Úteis') {
       navigate('/extensoes');
     }
+  };
+
+  const handleCloseCriarBibliotecaModal = () => {
+    setShowCriarBibliotecaModal(false);
+    setNewBaseTitle('');
+    setNewBaseDescription('');
+    setNewBaseIcon('📁');
+  };
+
+  const scrollEmojiRow = (direction) => {
+    if (!emojiScrollRef.current) return;
+    const step = 120;
+    emojiScrollRef.current.scrollBy({ left: direction === 'left' ? -step : step, behavior: 'smooth' });
+  };
+
+  const handleCriarBase = (e) => {
+    e.preventDefault();
+    const title = newBaseTitle.trim();
+    const description = newBaseDescription.trim();
+    if (!title) return;
+    const novaBase = { icon: newBaseIcon, title, description: description || 'Nova base de conhecimento' };
+    setCategories(prev => {
+      const semCriarBiblioteca = prev.filter(c => c.title !== 'Criar Biblioteca');
+      return [...semCriarBiblioteca, novaBase, { icon: '📚', title: 'Criar Biblioteca', description: 'Crie sua biblioteca' }];
+    });
+    handleCloseCriarBibliotecaModal();
   };
 
   const handleSearchResultClick = (result) => {
@@ -441,6 +456,75 @@ function TelaInicial() {
             })}
           </div>
         </section>
+      )}
+
+      {/* Modal Criar Biblioteca */}
+      {showCriarBibliotecaModal && (
+        <div className="modal-overlay" onClick={handleCloseCriarBibliotecaModal} role="dialog" aria-modal="true" aria-labelledby="modal-criar-biblioteca-title">
+          <div className="modal-popup criar-biblioteca-modal" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 id="modal-criar-biblioteca-title">📚 Criar nova base</h2>
+              <button type="button" className="modal-close" onClick={handleCloseCriarBibliotecaModal} aria-label="Fechar">×</button>
+            </div>
+            <form onSubmit={handleCriarBase} className="modal-form">
+              <label className="modal-label">
+                Nome da base
+                <input
+                  type="text"
+                  value={newBaseTitle}
+                  onChange={e => setNewBaseTitle(e.target.value)}
+                  placeholder="Ex: Meus procedimentos"
+                  className="modal-input"
+                  autoFocus
+                />
+              </label>
+              <label className="modal-label">
+                Descrição
+                <input
+                  type="text"
+                  value={newBaseDescription}
+                  onChange={e => setNewBaseDescription(e.target.value)}
+                  placeholder="Ex: Procedimentos internos da equipe"
+                  className="modal-input"
+                />
+              </label>
+              <label className="modal-label">
+                Emoji
+                <div className="modal-emoji-row">
+                  <button type="button" className="modal-emoji-arrow modal-emoji-arrow-left" onClick={() => scrollEmojiRow('left')} aria-label="Rolar emojis para a esquerda">
+                    ‹
+                  </button>
+                  <div className="modal-emoji-options" ref={emojiScrollRef} role="listbox" aria-label="Selecione um emoji">
+                    {EMOJI_OPCOES.map(emoji => (
+                      <button
+                        key={emoji}
+                        type="button"
+                        role="option"
+                        aria-selected={newBaseIcon === emoji}
+                        className={`modal-emoji-btn ${newBaseIcon === emoji ? 'active' : ''}`}
+                        onClick={() => setNewBaseIcon(emoji)}
+                        title={emoji}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                  <button type="button" className="modal-emoji-arrow modal-emoji-arrow-right" onClick={() => scrollEmojiRow('right')} aria-label="Rolar emojis para a direita">
+                    ›
+                  </button>
+                </div>
+              </label>
+              <div className="modal-actions">
+                <button type="button" className="modal-btn modal-btn-secondary" onClick={handleCloseCriarBibliotecaModal}>
+                  Cancelar
+                </button>
+                <button type="submit" className="modal-btn modal-btn-primary" disabled={!newBaseTitle.trim()}>
+                  Criar base
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
 
     </div>

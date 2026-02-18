@@ -38,13 +38,9 @@
   }
 }
 
-/* Enhanced hover effects */
+/* Enhanced hover effects - base transition (details in Categories Section) */
 .category-card {
-  transition: all 0.3s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-8px) scale(1.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .popular-item {
@@ -88,14 +84,7 @@ body.dark-mode .tela-inicial {
   color: #ffffff;
 }
 
-/* Enhanced hover effects */
-.category-card {
-  transition: all 0.3s ease;
-}
-
-.category-card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
+/* Hover transform applied in Categories Section */
 
 .popular-item {
   transition: all 0.2s ease;
@@ -146,8 +135,20 @@ body.dark-mode .category-card {
   border-color: #374151;
 }
 
+body.dark-mode .category-card::before {
+  background: conic-gradient(from 0deg, #60a5fa 0deg 72deg, transparent 72deg 360deg);
+}
+
+body.dark-mode .category-card::after {
+  background: #1f2937;
+}
+
 body.dark-mode .category-card:hover {
-  border-color: #60a5fa;
+  border-color: transparent;
+}
+
+body.dark-mode .category-card:hover::before {
+  opacity: 1;
 }
 
 body.dark-mode .category-title {
@@ -327,6 +328,321 @@ body.dark-mode .category-image {
   color: #6b7280;
   margin: 0;
   line-height: 1.4;
+}
+
+/* Modal Criar Biblioteca */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: modalOverlayIn 0.2s ease-out;
+}
+
+@keyframes modalOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-popup {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 440px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalPopIn 0.25s ease-out;
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.modal-close:hover {
+  color: #1f2937;
+  background: #f3f4f6;
+}
+
+.modal-form {
+  padding: 1.5rem;
+}
+
+.modal-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.modal-label + .modal-label {
+  margin-top: 1.25rem;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.modal-emoji-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  min-height: 2.5rem;
+}
+
+.modal-emoji-arrow {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #6b7280;
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.modal-emoji-arrow:hover {
+  color: #1f2937;
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+.modal-emoji-options {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 0;
+  min-height: 2.5rem;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-emoji-options::-webkit-scrollbar {
+  height: 6px;
+}
+
+.modal-emoji-options::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 3px;
+}
+
+.modal-emoji-options::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+.modal-emoji-btn {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.modal-emoji-btn:hover,
+.modal-emoji-btn.active {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.modal-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+}
+
+.modal-btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.modal-btn-primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.modal-btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Dark mode - Modal */
+body.dark-mode .modal-popup {
+  background: #1f2937;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #374151;
+}
+
+body.dark-mode .modal-header h2 {
+  color: #fff;
+}
+
+body.dark-mode .modal-close {
+  color: #9ca3af;
+}
+
+body.dark-mode .modal-close:hover {
+  color: #fff;
+  background: #374151;
+}
+
+body.dark-mode .modal-label {
+  color: #d1d5db;
+}
+
+body.dark-mode .modal-input {
+  background: #374151;
+  border-color: #4b5563;
+  color: #fff;
+}
+
+body.dark-mode .modal-input:focus {
+  border-color: #60a5fa;
+}
+
+body.dark-mode .modal-emoji-arrow {
+  background: #374151;
+  border-color: #4b5563;
+  color: #d1d5db;
+}
+
+body.dark-mode .modal-emoji-arrow:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+  color: #fff;
+}
+
+body.dark-mode .modal-emoji-options::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+body.dark-mode .modal-emoji-options::-webkit-scrollbar-thumb {
+  background: #6b7280;
+}
+
+body.dark-mode .modal-emoji-btn {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+body.dark-mode .modal-emoji-btn:hover,
+body.dark-mode .modal-emoji-btn.active {
+  border-color: #60a5fa;
+  background: #1e3a8a;
+}
+
+body.dark-mode .modal-actions {
+  border-top-color: #374151;
+}
+
+body.dark-mode .modal-btn-secondary {
+  background: #374151;
+  color: #d1d5db;
+}
+
+body.dark-mode .modal-btn-secondary:hover {
+  background: #4b5563;
+}
+
+body.dark-mode .modal-btn-primary {
+  background: #2563eb;
+}
+
+body.dark-mode .modal-btn-primary:hover:not(:disabled) {
+  background: #1d4ed8;
 }
 
 /* Popular Answers Section */

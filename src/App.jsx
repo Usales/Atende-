@@ -11,6 +11,7 @@ import TelaEmails from './telas/TelaEmails/TelaEmails'
 import TelaSeguranca from './telas/TelaSeguranca/TelaSeguranca'
 import TelaHardware from './telas/TelaHardware/TelaHardware'
 import TelaSoftwares from './telas/TelaSoftwares/TelaSoftwares'
+import TelaBiblioteca from './telas/TelaBiblioteca/TelaBiblioteca'
 import Footer from './componentes/Footer'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/seguranca" element={<TelaSeguranca />} />
           <Route path="/hardware" element={<TelaHardware />} />
           <Route path="/softwares" element={<TelaSoftwares />} />
+          <Route path="/biblioteca" element={<TelaBiblioteca />} />
         </Routes>
         <Footer />
       </div>
