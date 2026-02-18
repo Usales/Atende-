@@ -270,13 +270,6 @@ function TelaInicial() {
     }
   ];
 
-  const popularAnswers = [
-    'Aguardando retorno do colaborador',
-    'Mensagem de encerramento do atendimento',
-    'Aviso de regularização de equipamento',
-    'Como acessar recursos da VPN'
-  ];
-
   const handleSearch = () => {
     console.log('Searching for:', search);
   };
@@ -340,12 +333,6 @@ function TelaInicial() {
     console.log('Search result clicked:', result.title);
     // Navigate to the specific category page where this knowledge item belongs
     navigate(result.categoryRoute);
-  };
-
-  const handleAnswerClick = (answer) => {
-    console.log('Answer clicked:', answer);
-    // Navigate to TelaRespostas when clicking on popular answers
-    navigate('/respostas');
   };
 
   return (
@@ -456,25 +443,6 @@ function TelaInicial() {
         </section>
       )}
 
-      {/* Popular Answers Section - Show when not searching */}
-      {showCategories && (
-        <section className="popular-section animate-slide-down animate-delay-8">
-          <h2 className="section-title">
-            ✨ Respostas mais usadas
-          </h2>
-          <ul className="popular-list">
-            {popularAnswers.map((answer, index) => (
-              <li 
-                key={index}
-                className={`popular-item animate-slide-down animate-delay-${9 + index}`}
-                onClick={() => handleAnswerClick(answer)}
-              >
-                • {answer}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
     </div>
   );
 }
