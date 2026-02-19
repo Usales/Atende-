@@ -19,6 +19,7 @@ Uma plataforma moderna e completa para suporte técnico de TI, desenvolvida com 
 - [🌐 Demo Online](#-demo-online)
 - [🚀 Funcionalidades](#-funcionalidades)
 - [🛠️ Tecnologias](#%EF%B8%8F-tecnologias)
+- [📚 Biblioteca](#-biblioteca-telabiblioteca)
 - [🏢 Instalação](#-instalação)
 - [🔧 Scripts Disponíveis](#-scripts-disponíveis)
 - [🏗️ Arquitetura](#%EF%B8%8F-arquitetura)
@@ -59,6 +60,18 @@ Uma plataforma moderna e completa para suporte técnico de TI, desenvolvida com 
 - **Links Diretos**: Abertura automática na Chrome Web Store
 - **Cards Interativos**: Hover effects com transformações suaves
 - **Extensões Pré-configuradas**: AdGuard, LanguageTool, Wappalyzer, Lightshot e mais
+
+### 📚 **Biblioteca (TelaBiblioteca)**
+- **Bases por categoria**: Acesso à biblioteca por base (ex.: teste, procedimentos), com título e descrição vindos da Tela Inicial
+- **Card “Crie sua base”**: Botão de ação no mesmo padrão visual dos category-cards (373px), abrindo o modal de adicionar
+- **Modal “Adicionar à base”**: Formulário com pergunta/conteúdo, conteúdo detalhado (textarea), descrição, e container de ações:
+  - **Copiar**: Botões para copiar conteúdo detalhado, descrição e respostas para a área de transferência
+  - **Incluir respostas**: Checkbox + textarea para texto de respostas (ex.: mensagens padrão)
+  - **Botões para download**: Adição de arquivos com nome de botão personalizado (ex.: “Manual PDF”)
+- **Imagens**: Campo para anexar múltiplas imagens ao item
+- **Cards expansíveis**: Itens da base no mesmo padrão da Tela Operacional (título, descrição, botão 👁️)
+- **Visualização expandida**: Ao clicar em 👁️, exibe “Informações detalhadas”, botão “Copiar respostas” (quando houver), botões de download com nomes personalizados e preview do conteúdo
+- **Layout responsivo**: Truncamento de título/descrição nos cards para manter o botão 👁️ sempre visível; suporte a dark mode
 
 ### 🎛️ **Sistema Global**
 - **Header Responsivo**: Logo animada "Atende+" com navegação por clique
@@ -108,10 +121,13 @@ Atende+/
 │   │   │   ├── TelaCriarRespostas.jsx # Layout split + A4 preview
 │   │   │   ├── TelaCriarRespostas.css # Document styling
 │   │   │   └── index.js
-│   │   └── 📁 TelaExtensoes/     # Catálogo de extensões
-│   │       ├── TelaExtensoes.jsx # Grid de ferramentas
-│   │       ├── TelaExtensoes.css # Cards com hover effects
-│   │       └── index.js
+│   │   ├── 📁 TelaExtensoes/     # Catálogo de extensões
+│   │   │   ├── TelaExtensoes.jsx # Grid de ferramentas
+│   │   │   ├── TelaExtensoes.css # Cards com hover effects
+│   │   │   └── index.js
+│   │   └── 📁 TelaBiblioteca/    # Biblioteca / bases de conhecimento
+│   │       ├── TelaBiblioteca.jsx # Modal adicionar, cards expansíveis, copiar/download
+│   │       └── TelaBiblioteca.css # Estilos da biblioteca e modal
 │   ├── 📁 assets/                # Recursos estáticos
 │   ├── App.jsx                   # Router principal
 │   ├── App.css                   # Estilos globais
@@ -334,6 +350,12 @@ npm run lint
 
 ### **🌐 Deploy Online**
 A aplicação está disponível em: **[https://atende.netlify.app/](https://atende.netlify.app/)**
+
+## 📌 **Atualizações recentes**
+
+- **Biblioteca (TelaBiblioteca)**: Nova tela acessível pela categoria “Criar Biblioteca” na Tela Inicial. Permite criar bases por categoria, adicionar itens com pergunta, conteúdo detalhado, descrição, respostas opcionais, botões de download com nome personalizado e imagens. Cards no padrão da Tela Operacional com expansão (👁️) e ações de copiar respostas.
+- **Tela Inicial**: Integração com a rota `/biblioteca` e modal “Criar nova base” para criar bases e navegar para a Biblioteca com título e descrição.
+- **App**: Rota `/biblioteca` registrada no React Router.
 
 ## 🗺️ **Roadmap**
 
