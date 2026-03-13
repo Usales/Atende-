@@ -193,7 +193,7 @@ function TelaBiblioteca() {
           </article>
         ))}
         <div
-          className="biblioteca-content"
+          className="biblioteca-content animate-slide-down animate-delay-1"
           role="button"
           tabIndex={0}
           onClick={handleOpenAdicionarModal}
