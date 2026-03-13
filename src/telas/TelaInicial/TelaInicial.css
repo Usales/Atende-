@@ -443,34 +443,35 @@ body.dark-mode .category-image {
 }
 
 .modal-emoji-row {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: stretch;
   gap: 0.5rem;
   margin-top: 0.5rem;
-  min-height: 2.5rem;
+  min-height: 3.35rem;
 }
 
 .modal-emoji-arrow {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 48px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   line-height: 1;
-  color: #6b7280;
-  background: #f3f4f6;
+  color: #4b5563;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
   border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
 }
 
 .modal-emoji-arrow:hover {
   color: #1f2937;
-  background: #e5e7eb;
-  border-color: #d1d5db;
+  background: linear-gradient(180deg, #eef2f7 0%, #e5e7eb 100%);
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
 }
 
 .modal-emoji-options {
@@ -481,13 +482,14 @@ body.dark-mode .category-image {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  padding: 0.1rem;
+  padding: 0.35rem;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  background: #f9fafb;
-  min-height: 2.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  min-height: 3.35rem;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 
 .modal-emoji-options::-webkit-scrollbar {
@@ -506,12 +508,12 @@ body.dark-mode .category-image {
 
 .modal-emoji-btn {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.35rem;
+  height: 2.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   border: 2px solid #e5e7eb;
   background: white;
   border-radius: 8px;
@@ -610,15 +612,16 @@ body.dark-mode .modal-input:focus {
 }
 
 body.dark-mode .modal-emoji-arrow {
-  background: #374151;
+  background: linear-gradient(180deg, #374151 0%, #2d3642 100%);
   border-color: #4b5563;
   color: #d1d5db;
 }
 
 body.dark-mode .modal-emoji-arrow:hover {
-  background: #4b5563;
+  background: linear-gradient(180deg, #4b5563 0%, #3f4854 100%);
   border-color: #6b7280;
   color: #fff;
+  transform: translateY(-1px);
 }
 
 body.dark-mode .modal-emoji-options::-webkit-scrollbar-track {
@@ -641,7 +644,7 @@ body.dark-mode .modal-emoji-btn.active {
 }
 
 body.dark-mode .modal-emoji-options {
-  background: #111827;
+  background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
   border-color: #374151;
 }
 
@@ -1057,10 +1060,20 @@ body.dark-mode .result-action {
     font-size: 0.98rem;
   }
 
+  .modal-emoji-row {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    min-height: 44px;
+  }
+
+  .modal-emoji-options {
+    min-height: 44px;
+    padding: 0.22rem;
+  }
+
   .modal-emoji-arrow,
   .modal-emoji-btn {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 44px;
+    height: 44px;
   }
 
   .modal-emoji-btn {
